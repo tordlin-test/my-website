@@ -1,0 +1,20 @@
+/* Тёмная тема для сайта */
+
+body {
+    background-color: #121212;
+    color: #eeeeee;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 2rem;
+  }
+  
+  h1 {
+    color: #00bfff;
+    font-size: 2rem;
+  }
+  
+  p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #cccccc;
+  }

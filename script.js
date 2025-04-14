@@ -16,6 +16,8 @@ button.addEventListener("click", () => {
     count++;
     display.textContent = count;
 
+    console.log("💾 Сохраняю count:", count);
+
     // Сохраняем новое значение
     localStorage.setItem("clickCount", count);
 

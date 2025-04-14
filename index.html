@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Мой первый сайт</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=static">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой первый сайт</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=static">
 </head>
+
 <body>
-  <h1>Привет, мир!</h1>
-  <p>Это мой первый сайт, сделанный вручную.</p>
-  <div class="button-container">
-    <a href="#" class="main-button">🔍 Подробнее</a>
-  </div>  
-  <footer style="margin-top: 3rem; text-align: center; font-size: 0.9rem; color: #888;">
-    <a href="changelog.html" style="color: #00bfff; text-decoration: none; margin-right: 1rem;">
-      📘 История версий
-    </a>
-    |
-    <a href="roadmap.html" style="color: #00bfff; text-decoration: none; margin-left: 1rem;">
-      🗺️ План разработки
-    </a>
-  </footer>  
+    <div class="dev-banner">
+        🚧 Сайт находится в разработке. Это учебный проект, который будет дополняться поэтапно.
+    </div>
+    <h1>Привет, мир!</h1>
+    <p>Это мой первый сайт, сделанный вручную.</p>
+    <div class="button-container">
+        <a href="#" class="main-button">🔍 Подробнее</a>
+    </div>
+    <div class="counter-container">
+        <button id="clickButton">Нажми меня</button>
+        <p>Ты нажал <span id="clickCount">0</span> раз(а)</p>
+        <p id="randomOutput">🎁 Здесь появится один из любимых элементов!</p>
+    </div>
+    <footer style="margin-top: 3rem; text-align: center; font-size: 0.9rem; color: #888;">
+        <a href="changelog.html" style="color: #00bfff; text-decoration: none; margin-right: 1rem;">
+            📘 История версий
+        </a>
+        |
+        <a href="roadmap.html" style="color: #00bfff; text-decoration: none; margin-left: 1rem;">
+            🗺️ План разработки
+        </a>
+    </footer>
+    <script src="script.js"></script>
 </body>
+
 </html>

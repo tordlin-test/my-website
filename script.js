@@ -1,12 +1,27 @@
 console.log("JS работает ✅");
-let count = 0; // переменная для хранения количества кликов
 
 const button = document.getElementById("clickButton");      // кнопка
 const display = document.getElementById("clickCount");       // место вывода
 
+// Попробуем получить сохранённое значение
+let count = parseInt(localStorage.getItem("clickCount")) || 0;
+
+console.log("🔄 Загружено из localStorage:", count);
+// Если значение не было найдено, то оно будет равно 0
+
+// Отображаем начальное значение в DOM
+document.getElementById("clickCount").textContent = count;
+
 button.addEventListener("click", () => {
     count++;
     display.textContent = count;
+
+    // Сохраняем новое значение
+    localStorage.setItem("clickCount", count);
+
+    console.log("💾 Сохранено в localStorage:", count);
+
+    // Показ случайного элемента 
     const output = document.getElementById("randomOutput");
     const randomItem = getRandomItem(myFavorites);
     output.textContent = `🎲 Случайный выбор: ${randomItem}`;

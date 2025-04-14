@@ -61,11 +61,20 @@ body {
 }
 
 #randomOutput {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #e0e0e0;
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+    border-radius: 0.5rem;
+    padding: 1rem;
     margin-top: 1rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: #f0f0f0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
+
 
 .dev-banner {
     background-color: #ffc107;
@@ -77,6 +86,19 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin-bottom: 1rem;
 }
+
+.category-selector {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+#categorySelect {
+    padding: 0.4rem;
+    font-size: 1rem;
+    margin-top: 0.3rem;
+}
+
 
 @media (max-width: 600px) {
     body {

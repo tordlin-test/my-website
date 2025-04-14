@@ -17,17 +17,27 @@
     <div class="dev-banner">
         🚧 Сайт находится в разработке. Это учебный проект, который будет дополняться поэтапно.
     </div>
-    <h1>Привет, мир!</h1>
-    <p>Это мой первый сайт, сделанный вручную.</p>
-    <div class="button-container">
-        <a href="#" class="main-button">🔍 Подробнее</a>
+    <h1>Привет, друг!</h1>
+
+    <div class="category-selector">
+        <label for="categorySelect">Выбери категорию из моих любимых:</label>
+        <select id="categorySelect">
+            <option value="books">📚 Книги</option>
+            <option value="movies">🎬 Фильмы</option>
+            <option value="series">📺 Сериалы</option>
+            <option value="games">🎮 Игры</option>
+            <option value="cartoons">🎞️ Мультфильмы</option>
+            <option value="anime">🇯🇵 Аниме</option>
+        </select>
     </div>
     <div class="counter-container">
-        <button id="clickButton">Нажми меня</button>
+        <button id="clickButton">🎲 Получить рекомендацию</button>
         <p>Ты нажал <span id="clickCount">0</span> раз(а)</p>
-        <p id="randomOutput">🎁 Здесь появится один из любимых элементов!</p>
+        <p id="randomOutput">🎁 Здесь появится рандомный элемент из выбранного вами раздела!</p>
     </div>
+
     <footer style="margin-top: 3rem; text-align: center; font-size: 0.9rem; color: #888;">
+        <p>Это мой первый сайт, сделанный вручную.</p>
         <a href="changelog.html" style="color: #00bfff; text-decoration: none; margin-right: 1rem;">
             📘 История версий
         </a>

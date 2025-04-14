@@ -1,8 +1,21 @@
 /* Тёмная тема для сайта */
 
+:root {
+    --bg-color: #111;
+    --text-color: #eee;
+    --accent-color: #33bfff;
+    --card-bg: #1e1e1e;
+    --border-color: #444;
+    --button-bg: var(--accent-color);
+    --button-text: #000;
+    --button-hover: #4ccfff;
+}
+
+/* Общие стили */
+
 body {
-    background-color: #121212;
-    color: #eeeeee;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: 'Inter', sans-serif;
     margin: 0;
     min-height: 100vh;
@@ -15,6 +28,8 @@ body {
     padding: 2rem;
     box-sizing: border-box;
 }
+
+
 
 .button-container {
     margin-top: 2rem;
@@ -43,38 +58,14 @@ body {
     transform: scale(1.05);
 }
 
-#clickButton {
-    background-color: #00bfff;
-    color: #121212;
-    padding: 0.6rem 1.2rem;
+select {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    color: var(--text-color);
     font-size: 1rem;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-weight: bold;
-    margin-bottom: 1rem;
 }
-
-#clickButton:hover {
-    background-color: #0099cc;
-}
-
-#randomOutput {
-    background-color: #1e1e1e;
-    border: 1px solid #444;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-top: 1rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1.1rem;
-    line-height: 1.4;
-    color: #f0f0f0;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
 
 .dev-banner {
     background-color: #ffc107;
@@ -93,11 +84,57 @@ body {
     font-size: 1rem;
 }
 
+#clickCount {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+
+#clickButton {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s ease;
+}
+
+#clickButton:hover {
+    background-color: var(--button-hover);
+}
+
+#randomOutput {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
 #categorySelect {
     padding: 0.4rem;
     font-size: 1rem;
     margin-top: 0.3rem;
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#randomOutput.animate {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
 
 
 @media (max-width: 600px) {

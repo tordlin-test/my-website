@@ -30,34 +30,6 @@ body {
 }
 
 
-
-.button-container {
-    margin-top: 2rem;
-    text-align: center;
-}
-
-.counter-container {
-    text-align: center;
-    margin-top: 2rem;
-}
-
-.main-button {
-    display: inline-block;
-    background-color: #00bfff;
-    color: #121212;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.main-button:hover {
-    background-color: #009fd9;
-    transform: scale(1.05);
-}
-
 select {
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
@@ -76,6 +48,89 @@ select {
     font-weight: 500;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin-bottom: 1rem;
+}
+
+/* 🌿 Секция добавления элемента */
+#addItemSection {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+}
+
+#addItemSection h2 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    color: var(--accent-color);
+}
+
+/* 🧾 Поля формы */
+#addItemForm label {
+    display: block;
+    margin-bottom: 1rem;
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+#addItemForm input,
+#addItemForm select {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #262626;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-top: 0.3rem;
+    font-size: 1rem;
+}
+
+/* ➕ Кнопка */
+#addItemForm button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    font-weight: bold;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+#addItemForm button:hover {
+    background-color: var(--button-hover);
+}
+
+/* 📂 Вывод пользовательских коллекций */
+.user-collection-section {
+    margin-top: 2rem;
+    padding: 1rem 1.5rem;
+    background-color: #222;
+    border-left: 3px solid var(--accent-color);
+    border-radius: 6px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.user-collection-section h3 {
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+}
+
+.user-collection-section ul {
+    list-style: disc;
+    padding-left: 1.2rem;
+    margin: 0;
+}
+
+.user-collection-section li {
+    color: var(--text-color);
+    margin-bottom: 0.3rem;
 }
 
 .category-selector {
@@ -97,81 +152,11 @@ footer a {
     margin: 0 0.5rem;
 }
 
-
-#clickCount {
-    font-weight: bold;
-    color: var(--accent-color);
-}
-
-
-#clickButton {
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    border: none;
-    border-radius: 0.75rem;
-    padding: 0.75rem 1.5rem;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.2s ease;
-}
-
-#clickButton:hover {
-    background-color: var(--button-hover);
-}
-
 #categorySelect {
     padding: 0.4rem;
     font-size: 1rem;
     margin-top: 0.3rem;
 }
-
-#randomOutput {
-    margin-top: 1rem;
-    /* Внешний отступ сверху — создаёт расстояние до кнопки */
-    padding: 1rem 1.5rem;
-    /* Внутренние отступы: сверху/снизу — 1rem, по бокам — 1.5rem */
-    border: 1px solid #444;
-    /* Тонкая тёмная рамка вокруг блока */
-    border-radius: 8px;
-    /* Скругление углов — визуально "мягче" */
-    background-color: #1e1e1e;
-    /* Тёмный фон блока — как карточка */
-    font-size: 1.1rem;
-    /* Чуть увеличенный размер текста (по сравнению с обычным) */
-    font-weight: 500;
-    /* Умеренно жирный шрифт — для выделения */
-    color: #e0e0e0;
-    /* Светлый текст на тёмном фоне */
-    transition: all 0.3s ease;
-    /* Плавный переход при изменениях (например, при анимации) */
-    opacity: 0.9;
-    /* Чуть прозрачный — чтобы выглядел "легко" */
-}
-
-/* Анимация появления */
-#randomOutput.animate {
-    animation: fadeIn 0.4s ease;
-}
-
-
-
-
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-
-    to {
-        opacity: 0.9;
-        transform: translateY(0);
-    }
-}
-
-
 
 @media (max-width: 600px) {
     body {

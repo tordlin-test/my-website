@@ -19,22 +19,33 @@
     </div>
     <h1>Привет, друг!</h1>
 
-    <div class="category-selector">
-        <label for="categorySelect">Выбери категорию из моих любимых:</label>
-        <select id="categorySelect">
-            <option value="books">📚 Книги</option>
-            <option value="movies">🎬 Фильмы</option>
-            <option value="series">📺 Сериалы</option>
-            <option value="games">🎮 Игры</option>
-            <option value="cartoons">🎞️ Мультфильмы</option>
-            <option value="anime">🇯🇵 Аниме</option>
-        </select>
-    </div>
-    <div class="counter-container">
-        <button id="clickButton">🎲 Получить рекомендацию</button>
-        <p>Ты нажал <span id="clickCount">0</span> раз(а)</p>
-        <p id="randomOutput">🎁 Здесь появится рандомный элемент из выбранного вами раздела!</p>
-    </div>
+    <section id="addItemSection">
+        <h2>Добавить элемент в коллекцию</h2>
+
+        <form id="addItemForm">
+            <label>
+                Название:
+                <input type="text" id="titleInput" required />
+            </label>
+
+            <label>
+                Категория:
+                <select id="categoryInput" required>
+                    <option value="" disabled selected>Выбери категорию</option>
+                    <option value="books">📚 Книги</option>
+                    <option value="movies">🎬 Фильмы</option>
+                    <option value="series">📺 Сериалы</option>
+                    <option value="games">🎮 Игры</option>
+                    <option value="cartoons">🎞️ Мультфильмы</option>
+                    <option value="anime">🇯🇵 Аниме</option>
+                </select>
+            </label>
+
+            <button type="submit">➕ Добавить</button>
+        </form>
+
+        <div id="userCollectionOutput" style="margin-top: 2rem;"></div>
+    </section>
 
     <footer>
         <p>Это мой первый сайт, сделанный вручную.</p>
@@ -49,7 +60,6 @@
         </p>
     </footer>
 
-    <script src="collections.js"></script>
     <script src="script.js"></script>
 </body>
 

@@ -1,74 +1,82 @@
 window.addEventListener("DOMContentLoaded", () => {
     // ...весь твой код внутрь этой функции
+    // Переменные
+    const addItemForm = document.getElementById("addItemForm");
+    const titleInput = document.getElementById("titleInput");
+    const categoryInput = document.getElementById("categoryInput");
+    const userCollectionOutput = document.getElementById("userCollectionOutput");
 
-    let collections = {};
-    const categorySelect = document.getElementById("categorySelect");
-    const button = document.getElementById("clickButton");
-    const clickButton = document.getElementById("clickButton");
-    const clickCountDisplay = document.getElementById("clickCount");
-    const output = document.getElementById("randomOutput");
+    // Загружаем сохранённые данные из localStorage
+    let userCollections = JSON.parse(localStorage.getItem("userCollections")) || {};
 
-    let count = parseInt(localStorage.getItem("clickCount")) || 0;
-    clickCountDisplay.textContent = count;
+    // Отображаем при старте
+    renderUserCollections();
 
-    // Загружаем коллекции из JSON
-    fetch("collections.json")
-        .then(response => {
-            if (!response.ok) throw new Error("Ошибка загрузки данных");
-            return response.json();
-        })
-        .then(data => {
-            collections = data;
+    // Обработка отправки формы
+    addItemForm.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-            // Восстановление выбранной категории
-            const savedCategory = localStorage.getItem("selectedCategory");
-            if (savedCategory && collections[savedCategory]) {
-                categorySelect.value = savedCategory;
-            }
-        })
-        .catch(error => {
-            console.error("Ошибка при загрузке данных:", error);
-            output.textContent = "Не удалось загрузить коллекции 😢";
-        });
+        const title = titleInput.value.trim();
+        const category = categoryInput.value;
 
-    // Сохраняем выбранную категорию при изменении
-    categorySelect.addEventListener("change", () => {
-        localStorage.setItem("selectedCategory", categorySelect.value);
-    });
+        if (!title || !category) return;
 
-
-    // Функция выбора случайного элемента
-    function getRandomItem(array) {
-        return array[Math.floor(Math.random() * array.length)];
-    }
-
-    // Отображение карточки
-    function renderItemCard(item) {
-        const details = item.author || item.director || item.creator || item.studio || "неизвестно";
-        const year = item.year ? ` (${item.year})` : "";
-        output.textContent = `${item.title} — ${details}${year}`;
-
-        // Удалим предыдущую анимацию и добавим заново
-        output.classList.remove("animate");
-        void output.offsetWidth; // хак для перезапуска анимации
-        output.classList.add("animate");
-    }
-
-    // Обработка нажатия на кнопку
-    button.addEventListener("click", () => {
-        count++;
-        clickCountDisplay.textContent = count;
-        localStorage.setItem("clickCount", count);
-
-        const selectedCategory = categorySelect.value;
-        const selectedArray = collections[selectedCategory];
-
-        if (!selectedArray || selectedArray.length === 0) {
-            output.textContent = "Категория пуста или не найдена.";
-            return;
+        // Добавляем в коллекцию
+        if (!userCollections[category]) {
+            userCollections[category] = [];
         }
 
-        const randomItem = getRandomItem(selectedArray);
-        renderItemCard(randomItem);
+        userCollections[category].push({ title });
+
+        // Сохраняем в localStorage
+        localStorage.setItem("userCollections", JSON.stringify(userCollections));
+
+        // Очищаем поля
+        titleInput.value = "";
+        categoryInput.value = "";
+
+        // Обновляем отображение
+        renderUserCollections();
     });
+
+    // Отображение всех коллекций
+    function renderUserCollections() {
+        userCollectionOutput.innerHTML = "";
+
+        for (const category in userCollections) {
+            const items = userCollections[category];
+            if (items.length === 0) continue;
+
+            const section = document.createElement("div");
+            section.classList.add("user-collection-section");
+
+            const heading = document.createElement("h3");
+            heading.textContent = `📂 ${categoryLabel(category)}`;
+            section.appendChild(heading);
+
+            const ul = document.createElement("ul");
+            items.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item.title;
+                ul.appendChild(li);
+            });
+
+            section.appendChild(ul);
+            userCollectionOutput.appendChild(section);
+        }
+    }
+
+    // Преобразование ключа в красивую подпись
+    function categoryLabel(key) {
+        const labels = {
+            books: "Книги",
+            movies: "Фильмы",
+            series: "Сериалы",
+            games: "Игры",
+            cartoons: "Мультфильмы",
+            anime: "Аниме"
+        };
+        return labels[key] || key;
+    }
+
 });

@@ -84,6 +84,20 @@ select {
     font-size: 1rem;
 }
 
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+footer a {
+    color: #00bfff;
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+
+
 #clickCount {
     font-weight: bold;
     color: var(--accent-color);
@@ -107,32 +121,54 @@ select {
     background-color: var(--button-hover);
 }
 
-#randomOutput {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-}
-
 #categorySelect {
     padding: 0.4rem;
     font-size: 1rem;
     margin-top: 0.3rem;
 }
 
+#randomOutput {
+    margin-top: 1rem;
+    /* Внешний отступ сверху — создаёт расстояние до кнопки */
+    padding: 1rem 1.5rem;
+    /* Внутренние отступы: сверху/снизу — 1rem, по бокам — 1.5rem */
+    border: 1px solid #444;
+    /* Тонкая тёмная рамка вокруг блока */
+    border-radius: 8px;
+    /* Скругление углов — визуально "мягче" */
+    background-color: #1e1e1e;
+    /* Тёмный фон блока — как карточка */
+    font-size: 1.1rem;
+    /* Чуть увеличенный размер текста (по сравнению с обычным) */
+    font-weight: 500;
+    /* Умеренно жирный шрифт — для выделения */
+    color: #e0e0e0;
+    /* Светлый текст на тёмном фоне */
+    transition: all 0.3s ease;
+    /* Плавный переход при изменениях (например, при анимации) */
+    opacity: 0.9;
+    /* Чуть прозрачный — чтобы выглядел "легко" */
+}
+
+/* Анимация появления */
+#randomOutput.animate {
+    animation: fadeIn 0.4s ease;
+}
+
+
+
+
+
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(8px);
     }
 
     to {
-        opacity: 1;
+        opacity: 0.9;
         transform: translateY(0);
     }
-}
-
-#randomOutput.animate {
-    animation: fadeIn 0.4s ease-in-out;
 }
 
 

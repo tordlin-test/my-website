@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Шпаргалка по структуре HTML, CSS и JS</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        h2 {
+            color: #00bfff;
+            margin-top: 2rem;
+        }
+
+        code {
+            background: #222;
+            color: #0f0;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+        }
+
+        .table th,
+        .table td {
+            border: 1px solid #555;
+            padding: 0.5rem;
+        }
+
+        .table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>📘 Шпаргалка: HTML + CSS + JS</h1>
+
+    <h2>🧱 Структура HTML</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Заголовок вкладки&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    ...контент: заголовки, текст, кнопки, формы...
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </code></pre>
+
+    <h2>🎨 CSS-селекторы</h2>
+    <table class="table">
+        <tr>
+            <th>Селектор</th>
+            <th>Что выбирает</th>
+            <th>Пример</th>
+        </tr>
+        <tr>
+            <td><code>#idName</code></td>
+            <td>Один элемент с конкретным <code>id</code></td>
+            <td><code>#mainTitle</code></td>
+        </tr>
+        <tr>
+            <td><code>.className</code></td>
+            <td>Все элементы с этим <code>class</code></td>
+            <td><code>.button</code></td>
+        </tr>
+        <tr>
+            <td><code>element</code></td>
+            <td>Все теги данного типа</td>
+            <td><code>p</code>, <code>button</code></td>
+        </tr>
+    </table>
+
+    <h2>📦 Порядок в CSS</h2>
+    <ul>
+        <li><strong>:root</strong> — переменные</li>
+        <li>Общие элементы: <code>body</code>, <code>html</code>, <code>a</code></li>
+        <li>Компоненты: кнопки, поля, карточки</li>
+        <li>Медиа-запросы в конце: <code>@media</code></li>
+    </ul>
+
+    <h2>⚙️ Структура JS-файла</h2>
+    <ul>
+        <li>Получить DOM-элементы: <code>getElementById</code>, <code>querySelector</code></li>
+        <li>Настроить переменные и <code>localStorage</code></li>
+        <li>Основные функции: <code>renderItem()</code>, <code>fetch()</code></li>
+        <li>Добавить обработчики событий: <code>addEventListener</code></li>
+        <li>Подключать <code>script.js</code> — внизу страницы</li>
+    </ul>
+
+    <h2>🧠 Советы</h2>
+    <ul>
+        <li>Всегда подключай JS <strong>в конце body</strong></li>
+        <li>Имена переменных — понятные: <code>clickButton</code>, <code>output</code>, <code>selectedCategory</code>
+        </li>
+        <li>Сохраняй структуру: логика отдельно, данные отдельно, стили отдельно</li>
+    </ul>
+</body>
+
+</html>

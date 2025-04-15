@@ -1,62 +1,74 @@
-// Подтягиваем элементы
-const button = document.getElementById("clickButton");
-const display = document.getElementById("clickCount");
-const categorySelect = document.getElementById("categorySelect");
-const output = document.getElementById("randomOutput");
+window.addEventListener("DOMContentLoaded", () => {
+    // ...весь твой код внутрь этой функции
 
-// Загружаем счётчик и выбранную категорию
-let count = parseInt(localStorage.getItem("clickCount")) || 0;
-display.textContent = count;
+    let collections = {};
+    const categorySelect = document.getElementById("categorySelect");
+    const button = document.getElementById("clickButton");
+    const clickButton = document.getElementById("clickButton");
+    const clickCountDisplay = document.getElementById("clickCount");
+    const output = document.getElementById("randomOutput");
 
-const savedCategory = localStorage.getItem("preferredCategory");
-if (savedCategory) categorySelect.value = savedCategory;
+    let count = parseInt(localStorage.getItem("clickCount")) || 0;
+    clickCountDisplay.textContent = count;
 
-// Объект всех коллекций
-const collections = {
-    books,
-    movies,
-    series,
-    games,
-    cartoons,
-    anime
-};
+    // Загружаем коллекции из JSON
+    fetch("collections.json")
+        .then(response => {
+            if (!response.ok) throw new Error("Ошибка загрузки данных");
+            return response.json();
+        })
+        .then(data => {
+            collections = data;
 
-// Обработка выбора категории (сохраняем в localStorage)
-categorySelect.addEventListener("change", () => {
-    localStorage.setItem("preferredCategory", categorySelect.value);
-});
+            // Восстановление выбранной категории
+            const savedCategory = localStorage.getItem("selectedCategory");
+            if (savedCategory && collections[savedCategory]) {
+                categorySelect.value = savedCategory;
+            }
+        })
+        .catch(error => {
+            console.error("Ошибка при загрузке данных:", error);
+            output.textContent = "Не удалось загрузить коллекции 😢";
+        });
 
-// Функция выбора случайного элемента
-function getRandomItem(array) {
-    return array[Math.floor(Math.random() * array.length)];
-}
+    // Сохраняем выбранную категорию при изменении
+    categorySelect.addEventListener("change", () => {
+        localStorage.setItem("selectedCategory", categorySelect.value);
+    });
 
-// Отображение карточки
-function renderItemCard(item) {
-    const details = item.author || item.director || item.creator || item.studio || "неизвестно";
-    const year = item.year ? ` (${item.year})` : "";
-    output.textContent = `${item.title} — ${details}${year}`;
 
-    // Удалим предыдущую анимацию и добавим заново
-    output.classList.remove("animate");
-    void output.offsetWidth; // хак для перезапуска анимации
-    output.classList.add("animate");
-}
-
-// Обработка нажатия на кнопку
-button.addEventListener("click", () => {
-    count++;
-    display.textContent = count;
-    localStorage.setItem("clickCount", count);
-
-    const selectedCategory = categorySelect.value;
-    const selectedArray = collections[selectedCategory];
-
-    if (!selectedArray || selectedArray.length === 0) {
-        output.textContent = "Категория пуста или не найдена.";
-        return;
+    // Функция выбора случайного элемента
+    function getRandomItem(array) {
+        return array[Math.floor(Math.random() * array.length)];
     }
 
-    const randomItem = getRandomItem(selectedArray);
-    renderItemCard(randomItem);
+    // Отображение карточки
+    function renderItemCard(item) {
+        const details = item.author || item.director || item.creator || item.studio || "неизвестно";
+        const year = item.year ? ` (${item.year})` : "";
+        output.textContent = `${item.title} — ${details}${year}`;
+
+        // Удалим предыдущую анимацию и добавим заново
+        output.classList.remove("animate");
+        void output.offsetWidth; // хак для перезапуска анимации
+        output.classList.add("animate");
+    }
+
+    // Обработка нажатия на кнопку
+    button.addEventListener("click", () => {
+        count++;
+        clickCountDisplay.textContent = count;
+        localStorage.setItem("clickCount", count);
+
+        const selectedCategory = categorySelect.value;
+        const selectedArray = collections[selectedCategory];
+
+        if (!selectedArray || selectedArray.length === 0) {
+            output.textContent = "Категория пуста или не найдена.";
+            return;
+        }
+
+        const randomItem = getRandomItem(selectedArray);
+        renderItemCard(randomItem);
+    });
 });

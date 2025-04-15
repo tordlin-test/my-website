@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Шпаргалка по командам и хоткеям</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        h2 {
+            color: #00bfff;
+            margin-top: 2rem;
+        }
+
+        code {
+            background: #222;
+            color: #0f0;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        td,
+        th {
+            border: 1px solid #555;
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #111;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🧰 Шпаргалка по командам и хоткеям</h1>
+
+    <h2>⌨️ VS Code — полезные клавиши</h2>
+    <table>
+        <tr>
+            <th>Действие</th>
+            <th>Mac</th>
+            <th>Windows</th>
+        </tr>
+        <tr>
+            <td>Открыть терминал</td>
+            <td><code>Ctrl + `</code></td>
+            <td><code>Ctrl + `</code></td>
+        </tr>
+        <tr>
+            <td>Сохранить файл</td>
+            <td><code>Cmd + S</code></td>
+            <td><code>Ctrl + S</code></td>
+        </tr>
+        <tr>
+            <td>Открыть файл</td>
+            <td><code>Cmd + P</code></td>
+            <td><code>Ctrl + P</code></td>
+        </tr>
+        <tr>
+            <td>Поиск по проекту</td>
+            <td><code>Cmd + Shift + F</code></td>
+            <td><code>Ctrl + Shift + F</code></td>
+        </tr>
+        <tr>
+            <td>Выделить всё</td>
+            <td><code>Cmd + A</code></td>
+            <td><code>Ctrl + A</code></td>
+        </tr>
+        <tr>
+            <td>Комментарии</td>
+            <td><code>Cmd + /</code></td>
+            <td><code>Ctrl + /</code></td>
+        </tr>
+        <tr>
+            <td>Форматировать</td>
+            <td><code>Shift + Option + F</code></td>
+            <td><code>Shift + Alt + F</code></td>
+        </tr>
+    </table>
+
+    <h2>🖥️ Терминал (bash/zsh)</h2>
+    <ul>
+        <li><code>ls</code> — показать файлы в папке</li>
+        <li><code>cd имя_папки</code> — перейти в папку</li>
+        <li><code>cd ..</code> — на уровень выше</li>
+        <li><code>touch имя_файла</code> — создать файл</li>
+        <li><code>mkdir имя_папки</code> — создать папку</li>
+        <li><code>code .</code> — открыть текущую папку в VS Code</li>
+    </ul>
+
+    <section>
+        <h2>🧾 Git-шпаргалка для сайта</h2>
+
+        <h3>🟢 Инициализация проекта</h3>
+        <pre><code>git init
+git remote add origin https://github.com/твой-ник/my-website.git</code></pre>
+
+        <h2>✅ Стандартный рабочий цикл</h2>
+        <pre><code>git status
+git add .
+git commit -m "v3.5: Упрощённый ченджлог и обновлённый план"
+git push</code></pre>
+
+        <h2>🧼 Сброс изменений</h2>
+        <pre><code>git restore index.html   # Вернуть конкретный файл
+git restore .            # Вернуть всё как было</code></pre>
+
+        <h2>💬 Советы</h2>
+        <ul>
+            <li>Делай <strong>частые коммиты</strong> с понятными комментариями</li>
+            <li>Изменяй только нужные файлы</li>
+            <li>Проверяй результат через Live Server перед push</li>
+        </ul>
+
+        <h2>📄 Полезные команды</h2>
+        <pre><code>git log --oneline
+git diff</code></pre>
+    </section>
+
+
+    <h2>🔁 Очистка кэша браузера</h2>
+    <ul>
+        <li><strong>Быстро:</strong> <code>Cmd + Shift + R</code> (или <code>Ctrl + Shift + R</code>)</li>
+        <li><strong>Через DevTools:</strong> ПКМ на кнопку "Обновить" → "Empty Cache and Hard Reload"</li>
+        <li><strong>Глобально:</strong> Настройки → Приватность → Очистка истории</li>
+    </ul>
+
+    <h2>🚀 Полезное</h2>
+    <ul>
+        <li><code>Live Server</code> — расширение в VS Code для запуска сайта локально</li>
+        <li><code>console.log()</code> — выводит в консоль (для отладки)</li>
+        <li><code>localStorage.getItem()</code> и <code>setItem()</code> — хранение данных</li>
+        <li><code>fetch()</code> — загрузка данных из JSON или API</li>
+    </ul>
+</body>
+
+</html>

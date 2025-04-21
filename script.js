@@ -6,6 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const categoryInput = document.getElementById("categoryInput");
     const userCollectionOutput = document.getElementById("userCollectionOutput");
 
+
     // Загружаем сохранённые данные из localStorage
     let userCollections = JSON.parse(localStorage.getItem("userCollections")) || {};
 
@@ -39,44 +40,82 @@ window.addEventListener("DOMContentLoaded", () => {
         renderUserCollections();
     });
 
-    // Отображение всех коллекций
     function renderUserCollections() {
         userCollectionOutput.innerHTML = "";
 
-        for (const category in userCollections) {
-            const items = userCollections[category];
-            if (items.length === 0) continue;
+        const categories = {
+            books: "Книги",
+            movies: "Фильмы",
+            series: "Сериалы"
+        };
+
+        for (const key in categories) {
+            const items = userCollections[key] || [];
 
             const section = document.createElement("div");
             section.classList.add("user-collection-section");
 
             const heading = document.createElement("h3");
-            heading.textContent = `📂 ${categoryLabel(category)}`;
+            heading.textContent = `📁 ${categories[key]}`;
+
+            const clearBtn = document.createElement("button");
+            clearBtn.innerHTML = "🗑️ Очистить";
+            clearBtn.classList.add("clear-btn");
+
+            if (items.length === 0) {
+                clearBtn.disabled = true;
+                clearBtn.classList.add("disabled");
+            } else {
+                clearBtn.addEventListener("click", () => {
+                    userCollections[key] = [];
+                    localStorage.setItem("userCollections", JSON.stringify(userCollections));
+                    renderUserCollections();
+                });
+            }
+
+            heading.appendChild(clearBtn);
             section.appendChild(heading);
 
-            const ul = document.createElement("ul");
-            items.forEach(item => {
-                const li = document.createElement("li");
-                li.textContent = item.title;
-                ul.appendChild(li);
-            });
+            if (items.length === 0) {
+                const emptyMsg = document.createElement("p");
+                emptyMsg.textContent = "📭 Коллекция пуста";
+                emptyMsg.classList.add("empty-message");
+                section.appendChild(emptyMsg);
+            } else {
+                const ul = document.createElement("ul");
 
-            section.appendChild(ul);
+                items.forEach((item) => {
+                    const li = document.createElement("li");
+                    li.classList.add("collection-item");
+
+                    const itemWrapper = document.createElement("div");
+                    itemWrapper.classList.add("item-wrapper");
+
+                    const titleSpan = document.createElement("span");
+                    titleSpan.textContent = item.title;
+
+                    const deleteBtn = document.createElement("button");
+                    deleteBtn.textContent = "✖";
+                    deleteBtn.classList.add("delete-btn");
+                    deleteBtn.addEventListener("click", () => {
+                        const index = items.indexOf(item);
+                        if (index > -1) {
+                            items.splice(index, 1);
+                            localStorage.setItem("userCollections", JSON.stringify(userCollections));
+                            renderUserCollections();
+                        }
+                    });
+
+                    itemWrapper.appendChild(titleSpan);
+                    itemWrapper.appendChild(deleteBtn);
+                    li.appendChild(itemWrapper);
+                    ul.appendChild(li);
+                });
+
+                section.appendChild(ul);
+            }
+
             userCollectionOutput.appendChild(section);
         }
     }
-
-    // Преобразование ключа в красивую подпись
-    function categoryLabel(key) {
-        const labels = {
-            books: "Книги",
-            movies: "Фильмы",
-            series: "Сериалы",
-            games: "Игры",
-            cartoons: "Мультфильмы",
-            anime: "Аниме"
-        };
-        return labels[key] || key;
-    }
-
 });
